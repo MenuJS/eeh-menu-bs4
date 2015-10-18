@@ -1,0 +1,30 @@
+{
+  "name": "eeh-navigation-bs4",
+  "version": "0.1.0",
+  "homepage": "https://github.com/ethanhann/eeh-navigation-bs4",
+  "authors": [
+    "Ethan Hann <ethanhann@ensembleads.com>"
+  ],
+  "keywords": [
+    "eeh-navigation",
+    "menu",
+    "bootstrap4"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "~0.14.2",
+    "bootstrap": "~3.3.5",
+    "eeh-navigation": "~4.1.2"
+  },
+  "resolutions": {
+    "angular-bootstrap": "~0.14.2",
+    "bootstrap": ">=4.0"
+  }
+}
