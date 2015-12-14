@@ -1,14 +1,22 @@
 {
-  "name": "eeh-navigation-bs4",
-  "version": "0.1.0",
-  "homepage": "https://github.com/ethanhann/eeh-navigation-bs4",
+  "name": "eeh-menu-bs4",
+  "homepage": "https://github.com/ethanhann/eeh-menu-bs4",
   "authors": [
     "Ethan Hann <ethanhann@ensembleads.com>"
   ],
+  "description": "Bootstrap 4 AngularJS menu directives.",
+  "main": [
+    "dist/eeh-menu-bs4.css",
+    "dist/eeh-menu-bs4.js",
+    "dist/eeh-menu-bs4.tpl.js"
+  ],
   "keywords": [
     "eeh-navigation",
+    "eeh-menu",
     "menu",
-    "bootstrap4"
+    "navigation",
+    "AngularJS",
+    "Bootstrap"
   ],
   "license": "MIT",
   "ignore": [
@@ -19,12 +27,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular-bootstrap": "~0.14.2",
-    "bootstrap": "~3.3.5",
-    "eeh-navigation": "~4.1.2"
-  },
-  "resolutions": {
-    "angular-bootstrap": "~0.14.2",
-    "bootstrap": ">=4.0"
+    "angular-bootstrap": "~0.14.0",
+    "bootstrap": ">=4.0",
+    "eeh-menu": ">=5.0"
   }
 }

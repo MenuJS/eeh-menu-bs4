@@ -1,11 +1,11 @@
 (function(exports, global) {
     "use strict";
-    angular.module("eehNavigationBs4", [ "eehNavigation" ]);
+    angular.module("eehMenuBs4", [ "eehMenu" ]);
     "use strict";
     var CollapsedContentDirective = function() {
         return {
             restrict: "AE",
-            templateUrl: "template/eeh-navigation-bs4/collapsed-content/collapsed-content.html",
+            templateUrl: "template/eeh-menu-bs4/collapsed-content/collapsed-content.html",
             transclude: true,
             scope: {
                 navContainerClass: "=?",
@@ -17,12 +17,12 @@
             }
         };
     };
-    angular.module("eehNavigationBs4").directive("eehNavigationCollapsedContent", CollapsedContentDirective);
+    angular.module("eehMenuBs4").directive("eehMenuBs4CollapsedContent", CollapsedContentDirective);
     "use strict";
-    var NavbarDirective = function(eehNavigation) {
+    var NavbarDirective = function(eehMenu) {
         return {
             restrict: "AE",
-            templateUrl: "template/eeh-navigation-bs4/navbar/navbar.html",
+            templateUrl: "template/eeh-menu-bs4/navbar/navbar.html",
             scope: {
                 menuName: "=",
                 navClass: "=?",
@@ -36,14 +36,14 @@
             },
             link: function(scope) {
                 scope.iconBaseClass = function() {
-                    return eehNavigation.iconBaseClass();
+                    return eehMenu.iconBaseClass();
                 };
                 scope.navClass = scope.navClass || "navbar-default navbar-static-top";
-                scope.$watch(eehNavigation.menuItems, function() {
+                scope.$watch(eehMenu.menuItems, function() {
                     if (angular.isUndefined(scope.menuName)) {
                         return;
                     }
-                    var menuItems = eehNavigation.menuItemTree(scope.menuName);
+                    var menuItems = eehMenu.menuItemTree(scope.menuName);
                     scope.leftNavbarMenuItems = menuItems.filter(function(item) {
                         return !item.isHeavy();
                     });
@@ -54,9 +54,9 @@
             }
         };
     };
-    NavbarDirective.$inject = [ "eehNavigation" ];
-    angular.module("eehNavigationBs4").directive("eehNavigationNavbarBs4", NavbarDirective);
-    global["eeh-navigation-bs4"] = exports;
+    NavbarDirective.$inject = [ "eehMenu" ];
+    angular.module("eehMenuBs4").directive("eehMenuBs4Navbar", NavbarDirective);
+    global["eeh-menu-bs4"] = exports;
 })({}, function() {
     return this;
 }());

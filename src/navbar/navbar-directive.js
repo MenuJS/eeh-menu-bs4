@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name eeh-navigation-navbar-bs4
+ * @name eeh-menu-bs4-navbar
  * @restrict AE
  *
  * @description
@@ -18,10 +18,10 @@
  * @param {function=} brandClick Sets the callback function of the brand element.
  * @param {function=} collapsedTargetId Sets the data target of the navbar-toggler.
  */
-var NavbarDirective = function (eehNavigation) {
+var NavbarDirective = function (eehMenu) {
     return {
         restrict: 'AE',
-        templateUrl: 'template/eeh-navigation-bs4/navbar/navbar.html',
+        templateUrl: 'template/eeh-menu-bs4/navbar/navbar.html',
         scope: {
             menuName: '=',
             navClass: '=?',
@@ -35,14 +35,14 @@ var NavbarDirective = function (eehNavigation) {
         },
         link: function (scope) {
             scope.iconBaseClass = function () {
-                return eehNavigation.iconBaseClass();
+                return eehMenu.iconBaseClass();
             };
             scope.navClass = scope.navClass || 'navbar-default navbar-static-top';
-            scope.$watch(eehNavigation.menuItems, function () {
+            scope.$watch(eehMenu.menuItems, function () {
                 if (angular.isUndefined(scope.menuName)) {
                     return;
                 }
-                var menuItems = eehNavigation.menuItemTree(scope.menuName);
+                var menuItems = eehMenu.menuItemTree(scope.menuName);
                 scope.leftNavbarMenuItems = menuItems.filter(function (item) {
                     return !item.isHeavy();
                 });
@@ -55,4 +55,4 @@ var NavbarDirective = function (eehNavigation) {
 };
 
 /** @ngInject */
-angular.module('eehNavigationBs4').directive('eehNavigationNavbarBs4', NavbarDirective);
+angular.module('eehMenuBs4').directive('eehMenuBs4Navbar', NavbarDirective);

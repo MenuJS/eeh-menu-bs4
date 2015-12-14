@@ -1,14 +1,14 @@
 (function () {
     'use strict';
     angular.module('myApp', [
-        'eehNavigationBs4',
+        'eehMenuBs4',
         'ui.bootstrap',
         'ui.router'
     ]);
 
     angular.module('myApp')
-    .config(['eehNavigationProvider', function (eehNavigationProvider) {
-        eehNavigationProvider
+    .config(['eehMenuProvider', function (eehMenuProvider) {
+        eehMenuProvider
         .menuItem('foo.home', {
             text: 'Home',
             iconClass: 'fa-home',

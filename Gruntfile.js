@@ -1,14 +1,45 @@
 'use strict';
 
+var Dgeni = require('dgeni');
+
 module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
         settings: {
             src: 'src',
-            dist: 'dist',
             build: 'build',
-            libName: 'eeh-navigation-bs4'
+            dist: 'dist',
+            libName: 'eeh-menu-bs4',
+            docs: 'docs',
+            demo: '../eeh-menu/docs/bower_components/eeh-menu-bs4/dist'
+        },
+        copy: {
+            dev: {
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    src: ['<%= settings.dist %>/*'],
+                    dest: '<%= settings.demo %>'
+                }]
+            }
+        },
+        exec: {
+            generateChangelog: {
+                cmd: function () {
+                    return 'git log --oneline --decorate --no-merges > changelog.txt';
+                }
+            }
+        },
+        dgeni: {
+            options: {
+                // Specify the base path used when resolving relative paths to source files
+                basePath: '<%= settings.src %>'
+            },
+            // Process all js files in `src` and its subfolders ...
+            src: ['<%= settings.src %>/**/*.js', '<%= settings.docs %>/content/**/*.ngdoc'],
+            // Specify where write our generated doc files directory
+            dest: 'build/docs'
         },
         jshint: {
             options: {
@@ -19,26 +50,52 @@ module.exports = function (grunt) {
                 '<%= settings.src %>/**/*.js'
             ]
         },
+        karma: {
+            unit: {
+                configFile: 'karma.conf.js'
+            }
+        },
         ngAnnotate: {
-            eehNavigation: {
+            eehMenuBs4: {
                 files: {
                     '<%= settings.build %>/<%= settings.libName %>.annotated.js': [
-                        '<%= settings.src %>/<%= settings.libName %>.js',
-                        '<%= settings.src %>/collapsed-content/*.js',
-                        '<%= settings.src %>/navbar/*.js'
+                        '<%= settings.src %>/eeh-menu-bs4.js',
+                        '<%= settings.src %>/*/*.js',
+                        '!<%= settings.src %>/*/*-spec.js'
                     ]
                 }
             }
         },
         ngtemplates: {
-            eehNavigationBs4: {
+            eehMenuBs4: {
                 cwd: '<%= settings.src %>',
                 src: ['**/*.html'],
-                dest: '<%= settings.dist %>/<%= settings.libName %>.tpl.js',
+                dest: '<%= settings.dist %>/eeh-menu-bs4.tpl.js',
                 options: {
                     url: function (url) {
-                        return 'template/eeh-navigation-bs4/' + url;
+                        return 'template/eeh-menu-bs4/' + url;
                     }
+                }
+            }
+        },
+        sass: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= settings.src %>/',
+                    src: ['**/*.scss'],
+                    dest: '<%= settings.dist %>',
+                    flatten: true,
+                    ext: '.css'
+                }]
+            }
+        },
+        watch: {
+            src: {
+                files: ['src/**/*.*'],
+                tasks: ['build', 'copy:dev', 'dgeni'],
+                options: {
+                    spawn: false
                 }
             }
         },
@@ -69,25 +126,48 @@ module.exports = function (grunt) {
                 }
             }
         },
-        watch: {
-            src: {
-                files: ['src/**/*.*'],
-                tasks: ['build'],
-                options: {
-                    spawn: false
-                }
+        versioncheck: {
+            options: {
+                hideUpToDate: true
             }
         }
     });
+
+    grunt.registerTask('dgeni', 'Generate docs via dgeni.', function () {
+        var done = this.async();
+        var dgeni = new Dgeni([require('./docs/dgeni.conf')]);
+        dgeni.generate().then(done);
+    });
+
+    grunt.registerTask('dev', [
+        'watch:src'
+    ]);
+
+    grunt.registerTask('health-check', [
+        'versioncheck'
+    ]);
 
     grunt.registerTask('lint', [
         'jshint:src'
     ]);
 
+    grunt.registerTask('test', [
+        'lint',
+        'karma:unit'
+    ]);
+
     grunt.registerTask('build', [
+        'sass:dist',
+        'ngtemplates',
         'ngAnnotate',
         'uglify:beautify',
         'uglify:minify'
+    ]);
+
+    grunt.registerTask('release', [
+        'lint',
+        'build',
+        'exec:generateChangelog'
     ]);
 
     grunt.registerTask('default', [

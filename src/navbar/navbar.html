@@ -1,44 +1,44 @@
-<nav class="navbar eeh-navigation eeh-navigation-navbar" ng-class="navClass" style="background-color: #e3f2fd;">
+<nav class="navbar eeh-menu eeh-menu-navbar" ng-class="navClass" style="background-color: #e3f2fd;">
     <button class="navbar-toggler pull-right" type="button" ng-click="isCollapsed = !isCollapsed">
         &#9776;
     </button>
-    <eeh-navigation-navbar-brand text="brandText"
+    <eeh-menu-navbar-brand text="brandText"
                                  state="brandState"
                                  href="brandHref"
                                  target="brandTarget"
                                  src="brandSrc"
-                                 click="brandClick"></eeh-navigation-navbar-brand>
+                                 click="brandClick"></eeh-menu-navbar-brand>
     <div class="collapse navbar-toggleable-xs">
         <ul class="nav navbar-nav">
             <li class="nav-item"
                 ng-repeat="item in leftNavbarMenuItems | orderBy:'weight'"
-                ng-include="'template/eeh-navigation/navbar-bs4-menu-item.html'"
+                ng-include="'template/eeh-menu/navbar-bs4-menu-item.html'"
                 ng-if="item._isVisible()"
                 dropdown
                 ui-sref-active-eq="active"
-                eeh-navigation-active-menu-item="item"></li>
+                eeh-menu-active-menu-item="item"></li>
         </ul>
         <ul class="nav navbar-nav pull-left">
             <li class="nav-item"
                 ng-repeat="item in rightNavbarMenuItems | orderBy:'weight'"
-                ng-include="'template/eeh-navigation/navbar-bs4-menu-item.html'"
+                ng-include="'template/eeh-menu/navbar-bs4-menu-item.html'"
                 ng-if="item._isVisible()"
                 uib-dropdown
                 ui-sref-active-eq="active"
-                eeh-navigation-active-menu-item="item"></li>
+                eeh-menu-active-menu-item="item"></li>
         </ul>
     </div>
 </nav>
 
-<script type="text/ng-template" id="template/eeh-navigation/navbar-bs4-menu-item.html">
+<script type="text/ng-template" id="template/eeh-menu/navbar-bs4-menu-item.html">
     <a class="nav-link" ng-if="!item.isDivider && item.state" ui-sref="{{ item.state }}">
-        <span eeh-navigation-menu-item-content="item"></span>
+        <span eeh-menu-menu-item-content="item"></span>
     </a>
     <a class="nav-link" ng-if="item.click" ng-click="item.click()">
-        <span eeh-navigation-menu-item-content="item"></span>
+        <span eeh-menu-menu-item-content="item"></span>
     </a>
     <a class="nav-link" ng-if="item.href" ng-href="{{item.href}}" target="{{item.target ? item.target : '_self'}}">
-        <span eeh-navigation-menu-item-content="item"></span>
+        <span eeh-menu-menu-item-content="item"></span>
     </a>
     <a class="nav-link" ng-if="item.hasChildren()" uib-dropdown-toggle>
         <span class="icon-fw {{ iconBaseClass() }} {{ item.iconClass }}"></span>
@@ -49,7 +49,7 @@
         <li class="dropdown-item"
             ng-repeat="item in item.children()|orderBy:'weight'"
             ng-class="{'dropdown-divider': item.isDivider}"
-            ng-include="'template/eeh-navigation/navbar-bs4-menu-item.html'"
+            ng-include="'template/eeh-menu/navbar-bs4-menu-item.html'"
             ng-if="item._isVisible()"
             ui-sref-active-eq="active"></li>
     </ul>

@@ -8,13 +8,13 @@
 </head>
 <body>
 
-<eeh-navigation-collapsed-content is-collapsed="isNavbarCollapsed">
+<eeh-menu-bs4-collapsed-content is-collapsed="isNavbarCollapsed">
     <h4>Collapsed content</h4>
-</eeh-navigation-collapsed-content>
-<eeh-navigation-navbar-bs4 menu-name="'foo'"
-                           brand-text="'eeh-navigation-bs4'"
+</eeh-menu-bs4-collapsed-content>
+<eeh-menu-bs4-navbar menu-name="'foo'"
+                           brand-text="'eeh-menu-bs4'"
                            is-collapsed="isNavbarCollapsed">
-</eeh-navigation-navbar-bs4>
+</eeh-menu-bs4-navbar>
 
 
 <div class="jumbotron">
@@ -27,15 +27,16 @@
     </p>
 </div>
 
+<script src="../bower_components/menu.js/dist/menu.js"></script>
 <script src="../bower_components/angular/angular.js"></script>
 <script src="../bower_components/angular-translate/angular-translate.js"></script>
 <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-<script src="../bower_components/eeh-navigation/dist/eeh-navigation.js"></script>
-<script src="../bower_components/eeh-navigation/dist/eeh-navigation.tpl.js"></script>
+<script src="../bower_components/eeh-menu/dist/eeh-menu.js"></script>
+<script src="../bower_components/eeh-menu/dist/eeh-menu.tpl.js"></script>
 
-<script src="../dist/eeh-navigation-bs4.js"></script>
-<script src="../dist/eeh-navigation-bs4.tpl.js"></script>
+<script src="../dist/eeh-menu-bs4.js"></script>
+<script src="../dist/eeh-menu-bs4.tpl.js"></script>
 
 <script src="app.js"></script>
 </body>

@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name eeh-navigation-collapsed-content
+ * @name eeh-menu-bs4-collapsed-content
  * @restrict AE
  *
  * @description
@@ -14,7 +14,7 @@
 var CollapsedContentDirective = function () {
     return {
         restrict: 'AE',
-        templateUrl: 'template/eeh-navigation-bs4/collapsed-content/collapsed-content.html',
+        templateUrl: 'template/eeh-menu-bs4/collapsed-content/collapsed-content.html',
         transclude: true,
         scope: {
             navContainerClass: '=?',
@@ -28,5 +28,5 @@ var CollapsedContentDirective = function () {
 };
 
 /** @ngInject */
-angular.module('eehNavigationBs4').directive('eehNavigationCollapsedContent', CollapsedContentDirective);
+angular.module('eehMenuBs4').directive('eehMenuBs4CollapsedContent', CollapsedContentDirective);
 
