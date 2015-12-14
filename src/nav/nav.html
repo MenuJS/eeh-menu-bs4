@@ -24,7 +24,7 @@
         <span class="caret"></span>
     </a>
     <ul ng-if="item.hasChildren()" uib-dropdown-menu>
-        <li class="nav-item dropdown"
+        <li class="nav-item dropdown-item"
             ng-repeat="item in item.children()|orderBy:'weight'"
             ng-class="{'dropdown-divider': item.isDivider}"
             ng-include="'template/eeh-menu/navbar-bs4-menu-item.html'"
