@@ -17,12 +17,14 @@ angular.module('eehMenuBs4').run(['$templateCache', function($templateCache) {
     "        ng-include=\"'template/eeh-menu/nav-bs4-menu-item.html'\"\n" +
     "        ng-if=\"item.isVisible()\"\n" +
     "        uib-dropdown\n" +
-    "        ui-sref-active-eq=\"active\"\n" +
     "        eeh-menu-active-menu-item=\"item\"></li>\n" +
     "</ul>\n" +
     "\n" +
     "<script type=\"text/ng-template\" id=\"template/eeh-menu/nav-bs4-menu-item.html\">\n" +
-    "    <a class=\"nav-link\" ng-if=\"!item.isDivider && item.state\" ui-sref=\"{{ item.state }}\">\n" +
+    "    <a class=\"nav-link\"\n" +
+    "       ng-if=\"!item.isDivider && item.state\"\n" +
+    "       ui-sref=\"{{ item.state }}\"\n" +
+    "       ui-sref-active-eq=\"active\">\n" +
     "        <span eeh-menu-menu-item-content=\"item\"></span>\n" +
     "    </a>\n" +
     "    <a class=\"nav-link\" ng-if=\"item.click\" ng-click=\"item.click()\">\n" +
@@ -41,8 +43,7 @@ angular.module('eehMenuBs4').run(['$templateCache', function($templateCache) {
     "            ng-repeat=\"item in item.children()|orderBy:'weight'\"\n" +
     "            ng-class=\"{'dropdown-divider': item.isDivider}\"\n" +
     "            ng-include=\"'template/eeh-menu/navbar-bs4-menu-item.html'\"\n" +
-    "            ng-if=\"item.isVisible()\"\n" +
-    "            ui-sref-active-eq=\"active\"></li>\n" +
+    "            ng-if=\"item.isVisible()\"></li>\n" +
     "    </ul>\n" +
     "</script>\n"
   );

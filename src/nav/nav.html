@@ -4,12 +4,14 @@
         ng-include="'template/eeh-menu/nav-bs4-menu-item.html'"
         ng-if="item.isVisible()"
         uib-dropdown
-        ui-sref-active-eq="active"
         eeh-menu-active-menu-item="item"></li>
 </ul>
 
 <script type="text/ng-template" id="template/eeh-menu/nav-bs4-menu-item.html">
-    <a class="nav-link" ng-if="!item.isDivider && item.state" ui-sref="{{ item.state }}">
+    <a class="nav-link"
+       ng-if="!item.isDivider && item.state"
+       ui-sref="{{ item.state }}"
+       ui-sref-active-eq="active">
         <span eeh-menu-menu-item-content="item"></span>
     </a>
     <a class="nav-link" ng-if="item.click" ng-click="item.click()">
@@ -28,7 +30,6 @@
             ng-repeat="item in item.children()|orderBy:'weight'"
             ng-class="{'dropdown-divider': item.isDivider}"
             ng-include="'template/eeh-menu/navbar-bs4-menu-item.html'"
-            ng-if="item.isVisible()"
-            ui-sref-active-eq="active"></li>
+            ng-if="item.isVisible()"></li>
     </ul>
 </script>

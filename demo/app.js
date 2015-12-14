@@ -7,7 +7,13 @@
     ]);
 
     angular.module('myApp')
-    .config(['eehMenuProvider', function (eehMenuProvider) {
+    .config(['$stateProvider', 'eehMenuProvider', function ($stateProvider, eehMenuProvider) {
+        $stateProvider
+        .state('app', {abstract: true, template: '<ui-view></ui-view>'})
+        .state('app.1', {url: '/1', template: '<h1>1</h1>'})
+        .state('app.2', {url: '/2', template: '<h1>2</h1>'})
+        .state('app.3', {url: '/3', template: '<h1>3</h1>'});
+
         eehMenuProvider
         .menuItem('foo.home', {
             text: 'Home',
@@ -27,15 +33,15 @@
         eehMenuProvider
         .menuItem('bar.menuItem1', {
             text: 'Menu Item 1',
-            href: '#'
+            state: 'app.1'
         })
         .menuItem('bar.menuItem2', {
             text: 'Menu Item 2',
-            href: '#'
+            state: 'app.2'
         })
         .menuItem('bar.menuItem3', {
             text: 'Menu Item 3',
-            href: '#'
+            state: 'app.3'
         });
     }]);
 
