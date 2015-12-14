@@ -17,7 +17,7 @@ var NavDirective = function (eehMenu) {
         templateUrl: 'template/eeh-menu-bs4/nav/nav.html',
         scope: {
             menuName: '=',
-            navClass: '=?',
+            navClass: '=?'
         },
         link: function (scope) {
             scope.iconBaseClass = function () {
