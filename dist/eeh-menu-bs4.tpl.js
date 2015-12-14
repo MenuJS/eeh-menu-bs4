@@ -10,6 +10,44 @@ angular.module('eehMenuBs4').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('template/eeh-menu-bs4/nav/nav.html',
+    "<ul class=\"nav\" ng-class=\"navClass\">\n" +
+    "    <li class=\"nav-item\"\n" +
+    "        ng-repeat=\"item in menuItems | orderBy:'weight'\"\n" +
+    "        ng-include=\"'template/eeh-menu/nav-bs4-menu-item.html'\"\n" +
+    "        ng-if=\"item.isVisible()\"\n" +
+    "        uib-dropdown\n" +
+    "        ui-sref-active-eq=\"active\"\n" +
+    "        eeh-menu-active-menu-item=\"item\"></li>\n" +
+    "</ul>\n" +
+    "\n" +
+    "<script type=\"text/ng-template\" id=\"template/eeh-menu/nav-bs4-menu-item.html\">\n" +
+    "    <a class=\"nav-link\" ng-if=\"!item.isDivider && item.state\" ui-sref=\"{{ item.state }}\">\n" +
+    "        <span eeh-menu-menu-item-content=\"item\"></span>\n" +
+    "    </a>\n" +
+    "    <a class=\"nav-link\" ng-if=\"item.click\" ng-click=\"item.click()\">\n" +
+    "        <span eeh-menu-menu-item-content=\"item\"></span>\n" +
+    "    </a>\n" +
+    "    <a class=\"nav-link\" ng-if=\"item.href\" ng-href=\"{{item.href}}\" target=\"{{item.target ? item.target : '_self'}}\">\n" +
+    "        <span eeh-menu-menu-item-content=\"item\"></span>\n" +
+    "    </a>\n" +
+    "    <a class=\"nav-link\" ng-if=\"item.hasChildren()\" uib-dropdown-toggle>\n" +
+    "        <span class=\"icon-fw {{ iconBaseClass() }} {{ item.iconClass }}\"></span>\n" +
+    "        <span> {{ item.text|translate }}</span>\n" +
+    "        <span class=\"caret\"></span>\n" +
+    "    </a>\n" +
+    "    <ul ng-if=\"item.hasChildren()\" uib-dropdown-menu>\n" +
+    "        <li class=\"nav-item dropdown\"\n" +
+    "            ng-repeat=\"item in item.children()|orderBy:'weight'\"\n" +
+    "            ng-class=\"{'dropdown-divider': item.isDivider}\"\n" +
+    "            ng-include=\"'template/eeh-menu/navbar-bs4-menu-item.html'\"\n" +
+    "            ng-if=\"item.isVisible()\"\n" +
+    "            ui-sref-active-eq=\"active\"></li>\n" +
+    "    </ul>\n" +
+    "</script>\n"
+  );
+
+
   $templateCache.put('template/eeh-menu-bs4/navbar/navbar-brand.html',
     "<a ng-if=\"state && !href && (text || src)\"\n" +
     "   class=\"navbar-brand\"\n" +
@@ -58,7 +96,7 @@ angular.module('eehMenuBs4').run(['$templateCache', function($templateCache) {
     "                ng-repeat=\"item in leftNavbarMenuItems | orderBy:'weight'\"\n" +
     "                ng-include=\"'template/eeh-menu/navbar-bs4-menu-item.html'\"\n" +
     "                ng-if=\"item.isVisible()\"\n" +
-    "                dropdown\n" +
+    "                uib-dropdown\n" +
     "                ui-sref-active-eq=\"active\"\n" +
     "                eeh-menu-active-menu-item=\"item\"></li>\n" +
     "        </ul>\n" +

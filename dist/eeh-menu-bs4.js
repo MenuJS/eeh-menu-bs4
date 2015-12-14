@@ -19,7 +19,31 @@
     };
     angular.module("eehMenuBs4").directive("eehMenuBs4CollapsedContent", CollapsedContentDirective);
     "use strict";
-    angular.module("eehMenuBs4").directive("eehMenuBs4NavbarBrand", NavbarBrandDirective);
+    var NavDirective = function(eehMenu) {
+        return {
+            restrict: "AE",
+            templateUrl: "template/eeh-menu-bs4/nav/nav.html",
+            scope: {
+                menuName: "=",
+                navClass: "=?"
+            },
+            link: function(scope) {
+                scope.iconBaseClass = function() {
+                    return eehMenu.iconBaseClass();
+                };
+                scope.navClass = scope.navClass || "";
+                scope.$watch(eehMenu.menuItems, function() {
+                    if (angular.isUndefined(scope.menuName)) {
+                        return;
+                    }
+                    scope.menuItems = eehMenu.menuItemTree(scope.menuName);
+                }, true);
+            }
+        };
+    };
+    NavDirective.$inject = [ "eehMenu" ];
+    angular.module("eehMenuBs4").directive("eehMenuBs4Nav", NavDirective);
+    "use strict";
     function NavbarBrandDirective() {
         return {
             restrict: "AE",
@@ -34,6 +58,7 @@
             }
         };
     }
+    angular.module("eehMenuBs4").directive("eehMenuBs4NavbarBrand", NavbarBrandDirective);
     "use strict";
     var NavbarDirective = function(eehMenu) {
         return {
