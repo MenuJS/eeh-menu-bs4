@@ -6,7 +6,7 @@
  * @restrict AE
  *
  * @description
- * This directive allows for the creation of a Twitter Bootstrap v4 navbar component.
+ * This directive allows for the creation of a Twitter Bootstrap v4 nav component.
  *
  * @param {string=} menuName Sets the name of the menu that the directive will render.
  * @param {string=} navClass Sets the ng-class attribute of the top-level nav element.
