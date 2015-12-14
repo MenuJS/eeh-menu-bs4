@@ -18,24 +18,41 @@
 
 
 <div class="jumbotron">
-    <h1 class="display-3">Hello, world!</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-        featured content or information.</p>
-    <hr class="m-y-md">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </p>
+    <h1 class="display-3">Menu Directives</h1>
 </div>
 
-<h2>Basic Nav</h2>
-<div class="row">
-    <div class="col-sm-4">
-        <eeh-menu-bs4-nav menu-name="'foo'"></eeh-menu-bs4-nav>
+<div class="container-fluid">
+    <div class="card card-block">
+    <div class="row">
+            <div class="col-sm-4">
+                <h2>Basic Nav</h2>
+                <eeh-menu-bs4-nav menu-name="'foo'"></eeh-menu-bs4-nav>
+            </div>
+            <div class="col-sm-4">
+                <h2>Inline</h2>
+                <eeh-menu-bs4-nav menu-name="'foo'" nav-class="'nav-inline'"></eeh-menu-bs4-nav>
+            </div>
+            <div class="col-sm-4">
+                <h2>Tabs</h2>
+                <eeh-menu-bs4-nav menu-name="'foo'" nav-class="'nav-tabs'"></eeh-menu-bs4-nav>
+            </div>
+        </div>
     </div>
-    <div class="col-sm-8"></div>
 </div>
-
+<div class="container-fluid">
+    <div class="card card-block">
+        <div class="row">
+            <div class="col-sm-4">
+                <h2>Pills</h2>
+                <eeh-menu-bs4-nav menu-name="'foo'" nav-class="'nav-pills'"></eeh-menu-bs4-nav>
+            </div>
+            <div class="col-sm-4">
+                <h2>Stacked Pills</h2>
+                <eeh-menu-bs4-nav menu-name="'foo'" nav-class="'nav-pills nav-stacked'"></eeh-menu-bs4-nav>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="../bower_components/menu.js/dist/menu.js"></script>
 <script src="../bower_components/angular/angular.js"></script>
 <script src="../bower_components/angular-translate/angular-translate.js"></script>

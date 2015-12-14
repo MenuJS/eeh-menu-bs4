@@ -15,7 +15,7 @@
                 ng-repeat="item in leftNavbarMenuItems | orderBy:'weight'"
                 ng-include="'template/eeh-menu/navbar-bs4-menu-item.html'"
                 ng-if="item.isVisible()"
-                dropdown
+                uib-dropdown
                 ui-sref-active-eq="active"
                 eeh-menu-active-menu-item="item"></li>
         </ul>

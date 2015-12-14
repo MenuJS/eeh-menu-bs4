@@ -3,6 +3,7 @@
         ng-repeat="item in menuItems | orderBy:'weight'"
         ng-include="'template/eeh-menu/nav-bs4-menu-item.html'"
         ng-if="item.isVisible()"
+        uib-dropdown
         ui-sref-active-eq="active"
         eeh-menu-active-menu-item="item"></li>
 </ul>
@@ -17,13 +18,13 @@
     <a class="nav-link" ng-if="item.href" ng-href="{{item.href}}" target="{{item.target ? item.target : '_self'}}">
         <span eeh-menu-menu-item-content="item"></span>
     </a>
-    <a class="nav-link" ng-if="item.hasChildren()">
+    <a class="nav-link" ng-if="item.hasChildren()" uib-dropdown-toggle>
         <span class="icon-fw {{ iconBaseClass() }} {{ item.iconClass }}"></span>
         <span> {{ item.text|translate }}</span>
         <span class="caret"></span>
     </a>
-    <ul ng-if="item.hasChildren()" class="nav">
-        <li class="dropdown-item"
+    <ul ng-if="item.hasChildren()" uib-dropdown-menu>
+        <li class="nav-item dropdown"
             ng-repeat="item in item.children()|orderBy:'weight'"
             ng-class="{'dropdown-divider': item.isDivider}"
             ng-include="'template/eeh-menu/navbar-bs4-menu-item.html'"
