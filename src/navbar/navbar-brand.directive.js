@@ -1,5 +1,4 @@
 'use strict';
-angular.module('eehMenuBs4').directive('eehMenuBs4NavbarBrand', NavbarBrandDirective);
 
 /**
  * @ngInject
@@ -31,3 +30,5 @@ function NavbarBrandDirective() {
         }
     };
 }
+
+angular.module('eehMenuBs4').directive('eehMenuBs4NavbarBrand', NavbarBrandDirective);
