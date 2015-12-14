@@ -1,0 +1,11 @@
+db6bcd3 (HEAD, origin/master, origin/HEAD, master) Add ng-cloak to demo
+b090d24 Add nav examples and rename files
+f66b869 Add basic nav
+804cf3c Add brand directive
+3d3b189 Re-brand as eeh-menu-bs4
+bd9000d Update README.md
+9058e71 Update package.json
+20c5b08 Update bower.json
+87f40b5 Create README.md
+0693b15 Add initial implementation
+25ce270 Initial commit
