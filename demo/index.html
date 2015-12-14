@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <title>Demo</title>
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css"/>
-
+    <link rel="stylesheet" href="demo.css"/>
 </head>
 <body>
-
-<eeh-menu-bs4-collapsed-content is-collapsed="isNavbarCollapsed">
-    <h4>Collapsed content</h4>
+<eeh-menu-bs4-collapsed-content is-collapsed="isNavbarCollapsed" ng-cloak>
+    <h4>Collapsed Content Menu</h4>
+    <eeh-menu-bs4-nav menu-name="'bar'"></eeh-menu-bs4-nav>
 </eeh-menu-bs4-collapsed-content>
+
 <eeh-menu-bs4-navbar menu-name="'foo'"
                      brand-text="'eeh-menu-bs4'"
                      is-collapsed="isNavbarCollapsed">
 </eeh-menu-bs4-navbar>
-
 
 <div class="jumbotron">
     <h1 class="display-3">Menu Directives</h1>
