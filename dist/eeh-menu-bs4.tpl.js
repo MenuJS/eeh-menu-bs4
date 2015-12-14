@@ -37,7 +37,7 @@ angular.module('eehMenuBs4').run(['$templateCache', function($templateCache) {
     "        <span class=\"caret\"></span>\n" +
     "    </a>\n" +
     "    <ul ng-if=\"item.hasChildren()\" uib-dropdown-menu>\n" +
-    "        <li class=\"nav-item dropdown\"\n" +
+    "        <li class=\"nav-item dropdown-item\"\n" +
     "            ng-repeat=\"item in item.children()|orderBy:'weight'\"\n" +
     "            ng-class=\"{'dropdown-divider': item.isDivider}\"\n" +
     "            ng-include=\"'template/eeh-menu/navbar-bs4-menu-item.html'\"\n" +
