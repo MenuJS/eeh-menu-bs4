@@ -11,16 +11,16 @@
         eehMenuProvider
         .menuItem('foo.home', {
             text: 'Home',
-            iconClass: 'fa-home',
+            iconClass: 'glyphicon-home',
             href: '/'
         })
         .menuItem('foo.user', {
             text: 'Me',
-            iconClass: 'fa-user'
+            iconClass: 'glyphicon-user'
         })
         .menuItem('foo.user.profile', {
             text: 'User Profile',
-            iconClass: 'fa-user',
+            iconClass: 'glyphicon-user',
             href: '/user-profile'
         });
     }]);

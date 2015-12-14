@@ -1,19 +1,20 @@
-<nav class="navbar eeh-menu eeh-menu-navbar" ng-class="navClass" style="background-color: #e3f2fd;">
+<nav class="navbar eeh-menu eeh-menu-navbar" ng-class="navClass">
     <button class="navbar-toggler pull-right" type="button" ng-click="isCollapsed = !isCollapsed">
         &#9776;
     </button>
-    <eeh-menu-navbar-brand text="brandText"
-                                 state="brandState"
-                                 href="brandHref"
-                                 target="brandTarget"
-                                 src="brandSrc"
-                                 click="brandClick"></eeh-menu-navbar-brand>
+    <eeh-menu-bs4-navbar-brand text="brandText"
+                               state="brandState"
+                               href="brandHref"
+                               target="brandTarget"
+                               src="brandSrc"
+                               click="brandClick">
+    </eeh-menu-bs4-navbar-brand>
     <div class="collapse navbar-toggleable-xs">
         <ul class="nav navbar-nav">
             <li class="nav-item"
                 ng-repeat="item in leftNavbarMenuItems | orderBy:'weight'"
                 ng-include="'template/eeh-menu/navbar-bs4-menu-item.html'"
-                ng-if="item._isVisible()"
+                ng-if="item.isVisible()"
                 dropdown
                 ui-sref-active-eq="active"
                 eeh-menu-active-menu-item="item"></li>
@@ -22,7 +23,7 @@
             <li class="nav-item"
                 ng-repeat="item in rightNavbarMenuItems | orderBy:'weight'"
                 ng-include="'template/eeh-menu/navbar-bs4-menu-item.html'"
-                ng-if="item._isVisible()"
+                ng-if="item.isVisible()"
                 uib-dropdown
                 ui-sref-active-eq="active"
                 eeh-menu-active-menu-item="item"></li>
@@ -50,7 +51,7 @@
             ng-repeat="item in item.children()|orderBy:'weight'"
             ng-class="{'dropdown-divider': item.isDivider}"
             ng-include="'template/eeh-menu/navbar-bs4-menu-item.html'"
-            ng-if="item._isVisible()"
+            ng-if="item.isVisible()"
             ui-sref-active-eq="active"></li>
     </ul>
 </script>

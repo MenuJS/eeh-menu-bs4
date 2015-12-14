@@ -19,6 +19,22 @@
     };
     angular.module("eehMenuBs4").directive("eehMenuBs4CollapsedContent", CollapsedContentDirective);
     "use strict";
+    angular.module("eehMenuBs4").directive("eehMenuBs4NavbarBrand", NavbarBrandDirective);
+    function NavbarBrandDirective() {
+        return {
+            restrict: "AE",
+            templateUrl: "template/eeh-menu-bs4/navbar/navbar-brand.html",
+            scope: {
+                text: "=",
+                state: "=",
+                href: "=",
+                target: "=",
+                src: "=",
+                click: "="
+            }
+        };
+    }
+    "use strict";
     var NavbarDirective = function(eehMenu) {
         return {
             restrict: "AE",
